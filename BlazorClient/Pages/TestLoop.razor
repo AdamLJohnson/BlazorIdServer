@@ -1,0 +1,31 @@
+﻿@page "/testloop"
+@using System.Diagnostics
+    <h3>TestLoop</h3>
+
+    <div>@diffTime</div>
+
+    <button class="btn btn-success" @onclick="Loop">Loop</button>
+
+    @code {
+        private string diffTime = "";
+
+        protected override Task OnInitializedAsync()
+        {
+            Loop();
+            return Task.FromResult(true);
+        }
+
+        private void Loop()
+        {
+            var loopArrayVariable = Enumerable.Range(0, 100000).ToArray();
+
+            var sw = Stopwatch.StartNew();
+            for (int i = 0; i < 100000; i++)
+            {
+                var value = loopArrayVariable[i];
+            }
+            sw.Stop();
+            diffTime = $"Loop took {sw.ElapsedMilliseconds:N4} milliseconds.";
+        }
+
+    }

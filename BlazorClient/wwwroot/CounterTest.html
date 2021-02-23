@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+<div id="difftime"></div>
+
+
+<script>
+    var loopArrayVariable = new Array(100000);
+    loopArrayVariable.fill(1);
+
+    var startTime = performance.now();
+    for (i = 0; i < loopArrayVariable.length; i++) {
+        var value = loopArrayVariable[i];
+    }
+    var endTime = performance.now();
+    document.getElementById("difftime").textContent = `Loop took ${endTime - startTime} milliseconds.`;
+</script>
+</body>
+</html>
